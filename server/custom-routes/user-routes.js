@@ -17,7 +17,7 @@ export default {
     }
   },
   sharedVaults: {
-    path: '/sharedVaults',
+    path: '/sharedvaults',
     reqType: 'get',
     method(req, res, next) {
       Vaults.find({collaborators: {$in: req.session.uid}})

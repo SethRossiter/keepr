@@ -5,7 +5,7 @@ let env = {
 	DBPROTOCOL: 'mongodb',
 	DBUSERNAME: 'student',
 	DBPASSWORD: '1234',
-	DBHOST: 'mongo ds135382.mlab.com:35382',
+	DBHOST: 'ds135382.mlab.com:35382',
 	DBNAME: 'vault-keeper',
 	SERVERNAME: 'dev-server'
 }
