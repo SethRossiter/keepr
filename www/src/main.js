@@ -10,12 +10,8 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
-  data(){
-    return {
-      store
-    }
-  },
   template: '<App/>',
   components: { App }
 })
