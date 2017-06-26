@@ -3,6 +3,8 @@ import router from '../router'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+Vue.use(Vuex)
+
 let api = axios.create({
   baseURL: 'http://localhost:3000/api/',
   timeout: 2000,
@@ -17,6 +19,7 @@ let state = {
   myVaults: {},
   activeVault: {},
   myKeeps: {},
+  activeKeep: {},
   //Dummy Data
   keeps: [{
     title: 'Learn to Draw',
@@ -78,19 +81,33 @@ export default new Vuex.Store ({
   state,
 
   mutations: {
-    user(state, user) {
+    setUser(state, user) {
       state.user = user
     },
     setVaults(state, vaults) {
       state.vaults = vaults
     },
+    setmyVaults(state, myVaults) {
+      state.myVaults = myVaults
+    },
     setActiveVault(state, activeVault) {
       state.activeVault = activeVault
+    },
+    setKeeps(state, keeps) {
+      state.keeps = keeps
+    },
+    setActiveKeep(state, activeKeep) {
+      state.activeKeep = activeKeep
+    },
+    setmyKeeps(state, myKeeps) {
+      state.myKeeps = myKeeps
     }
+
   },
 
   // ACTIONS ARE RESPONSIBLE FOR MANAGING ALL ASYNC REQUESTS
   actions: {
+    //User Actions
 
     login({ commit, dispatch }, user) {
       auth.post('login', user)
@@ -99,7 +116,7 @@ export default new Vuex.Store ({
             return handleError(res.data.error)
           }
           commit('setUser', res.data.data)
-          router.push('/campaigns')
+          router.push('/vaults')
         })
         .catch(handleError)
     },
@@ -110,7 +127,7 @@ export default new Vuex.Store ({
             return handleError(res.data.error)
           }
           commit("setUser", res.data.data)
-          router.push('/campaigns')
+          router.push('/vaults')
         })
         .catch(handleError)
     },
@@ -121,7 +138,7 @@ export default new Vuex.Store ({
             return router.push('/login')
           }
           state.user = res.data.data
-          router.push('/campaigns')
+          router.push('/vaults')
         }).catch(err => {
           router.push('/login')
         })
@@ -135,6 +152,64 @@ export default new Vuex.Store ({
     clearError() {
       state.error = {}
     },
+    //Vault Actions
+    getVaults({commit, dispatch}) {
+      api('/userVaults')
+      .then(res => {
+        commit('setVaults', res.data.data)
+      })
+      .catch(handleError)
+    },
+    getVault({commit, dispatch}, id) {
+      api('/vaults/' + id)
+      .then(res => {
+        commit('setActiveVault', res.data.data)
+      })
+      .catch(handleError) 
+    },
+    createVault({commit, dispatch}, vault) {
+      api.post('/vaults/', vault)
+      .then(res => {
+        dispatch('getVaults')
+      })
+      .catch(handleError)
+    },
+    removeVault({commit, dispatch}, vault) {
+      api.delete('/vaults/' + vault._id)
+      .then(res => {
+        dispatch('getVaults')
+      })
+      .catch(handleError)
+    },
+    //Keep Actions
+    getKeeps({commit, dispatch}, id) {
+      api('/vaults/' + id + '/keeps/')
+      .then(res => {
+        commit('setKeeps', res.data.data)
+      })
+      .catch(handleError)
+    },
+    getKeep({commit, dispatch}, id) {
+      api('/keeps/' + id)
+      .then(res => {
+        commit('setActiveKeep', res.data.data)
+      })
+      .catch(handleError)
+    },
+    createKeep({commit, dispatch}, keep) {
+      api.post('/keeps' + keep)
+      .then(res => {
+        dispatch('getEncounters', keep.vaultId)
+      })
+      .catch(handleError)
+    },
+    removeKeep({commit, dispatch}, keep) {
+      api.delete('/keeps/' + keep._id)
+      .then(res => {
+        dispatch('getKeeps', keep.vaultId)
+      })
+      .catch(handleError)
+    }
   }
 })
 

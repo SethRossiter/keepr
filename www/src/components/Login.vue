@@ -1,30 +1,34 @@
 <template>
-    <div class = "login">
-        <div class = "container-fluid">
-            <h1>Welcome to KEEPER!</h1>
-            <div class = "jumbotron">
-                <div class = "well">
-                    <form @submit.prevent = "login">
-                        <div class = "input-group">
-                            <div class = "col-sm-10">
-                            <input type ="email" class = "form-control" v-model = "user.email" required placeholder = "email">
+     <div class="login">
+        <div class="container-fluid">
+            <h1 class="keeper">KEEPER</h1>
+            <div class="jumbotron">
+                <div class="well well-sm custom-well-small">
+                    <form @submit.prevent="login">
+                        <div class="input-group">
+                            <span class="input-group-addon fa fa-envelope-open"></span>
+                            <div class="col-10">
+                                <input type="email" class="form-control" v-model="user.email" required placeholder="email">
                             </div>
                         </div>
-                        <div class = "input-group">
-                            <div class = "col-sm-10">
-                            <input type = "password" class = "form-control" v-model = "user.password" required placeholder = "password">
-                            </div>    
+                        <div class="input-group">
+                            <span class="input-group-addon fa fa-star"></span>
+                            <div class="col-10">
+                                <input type="password" class="form-control" v-model="user.password" required placeholder="password">
+                            </div>
                         </div>
-                    <div class = "form group row">
-                        <div class = "col-sm-10">
-                            <button class = "btn btn-default" type = "submit">SUBMIT</button>
-                        </div>         
-                    </div>
-                </form>
+                        <div class="form group row">
+                            <div class="col-10">
+                                <button class="btn btn-default" type="submit">SUBMIT</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
+            <h2 class="dungeon">Become a Dungeon Master... REGISTER
+                <router-link to='/register'>here</router-link>!</h2>
         </div>
     </div>
-  </div>
 </template>
 
 <script>
