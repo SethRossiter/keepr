@@ -1,43 +1,71 @@
 <template>
-  <div class="login">
-    <h1>Welcome to Keepr</h1>
-    <p>Get Started</p>
-    <ul>
-      <li><router-link to="login">Login</router-link></li>
-      <li><router-link to="register">Register</router-link></li>
-    </ul>
-    <hr>
+    <div class = "login">
+        <div class = "container-fluid">
+            <h1>Welcome to KEEPER!</h1>
+            <div class = "jumbotron">
+                <div class = "well">
+                    <form @submit.prevent = "login">
+                        <div class = "input-group">
+                            <div class = "col-sm-10">
+                            <input type ="email" class = "form-control" v-model = "user.email" required placeholder = "email">
+                            </div>
+                        </div>
+                        <div class = "input-group">
+                            <div class = "col-sm-10">
+                            <input type = "password" class = "form-control" v-model = "user.password" required placeholder = "password">
+                            </div>    
+                        </div>
+                    <div class = "form group row">
+                        <div class = "col-sm-10">
+                            <button class = "btn btn-default" type = "submit">SUBMIT</button>
+                        </div>         
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'login',
-  data () {
-    return {
-
-    }
-  }
+    name: 'login',
+    data() {
+        return {
+            user: {}
+        }
+    },
+    computed: {},
+    methods: {
+        login() {
+            this.$store.dispatch('login', this.user)
+        }
+    },
+    components: {}
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+    h1 {
+        text-align: center;
+        font-size: 60px;
+        font-weight: bold;
+    }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+    input {
+        color: black;
+        margin-bottom: 10px;
+        font-size: 17px;
+    }
 
-a {
-  color: #42b983;
-}
+    .well {
+        width: 335px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: rgba(100, 100, 100, 0);
+        border-color: rgba(100, 100, 100, 0);
+    }
+
+   
 </style>

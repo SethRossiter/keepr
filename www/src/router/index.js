@@ -23,6 +23,10 @@ export default new Router({
       path: '/vaults/:id',
       name: 'Vault',
       component: Vault
+    },
+    {
+      path: "*",
+      rredirect: "/"
     }
   ]
 })
