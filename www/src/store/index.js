@@ -5,11 +5,11 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-// let api = axios.create({
-//   baseURL: 'http://localhost:3000/api/',
-//   timeout: 2000,
-//   withCredentials: true
-// })
+let api = axios.create({
+  baseURL: 'http://localhost:3000/api/',
+  timeout: 2000,
+  withCredentials: true
+})
 let auth = axios.create({
   baseURL: 'http://localhost:3000/api/',
   timeout: 2000,
