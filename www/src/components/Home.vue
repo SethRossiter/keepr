@@ -1,5 +1,10 @@
 <template>
     <div class="keeps">
+        <nav class = "navbar navbar-default">
+            <ul class = "navbar-right">
+                    <button type="button"><router-link to='/vaults'>Dashboard</router-link></button>   
+            </ul>
+        </nav>
     <form  class="form-inline" @submit.prevent="getKeeps">
       <div class="form-group">
         <h1>Keeps</h1>
@@ -11,7 +16,7 @@
       <div class='col-xs-4 text-center' v-for="keep in keeps">
       <router-link :to=" '/keeps/' + keep._id">
         <div class="panel panel-default"> 
-          <img :src="keep.imgUrl" class="img-circle"> 
+          <img :src="keep.imgUrl" class="img-circle" width="200" height="200"> 
           <h3>Title: {{keep.title}}</h3>
           <h4>Body: {{keep.body}}</h4>
           <h6>Keep Count: {{keep.keepCount}}</h6>
@@ -53,4 +58,5 @@ export default {
 </script>
 
 <style>
+
 </style>
