@@ -5,7 +5,12 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-let api = axios.create({
+// let api = axios.create({
+//   baseURL: 'http://localhost:3000/api/',
+//   timeout: 2000,
+//   withCredentials: true
+// })
+let auth = axios.create({
   baseURL: 'http://localhost:3000/api/',
   timeout: 2000,
   withCredentials: true
@@ -112,11 +117,12 @@ export default new Vuex.Store ({
     login({ commit, dispatch }, user) {
       auth.post('login', user)
         .then(res => {
+          console.log(res)
           if (res.data.error) {
-            return handleError(res.data.error)
+            // return handleError(res.data.error)
           }
           commit('setUser', res.data.data)
-          router.push('/vaults')
+          router.push('/home')
         })
         .catch(handleError)
     },
@@ -124,10 +130,10 @@ export default new Vuex.Store ({
       auth.post('register', user)
         .then(res => {
           if (res.data.error) {
-            return handleError(res.data.error)
+            // return handleError(res.data.error)
           }
-          commit("setUser", res.data.data)
-          router.push('/vaults')
+          state.user = res.data.data
+          router.push('/home')
         })
         .catch(handleError)
     },
@@ -138,7 +144,7 @@ export default new Vuex.Store ({
             return router.push('/login')
           }
           state.user = res.data.data
-          router.push('/vaults')
+          router.push('/home')
         }).catch(err => {
           router.push('/login')
         })

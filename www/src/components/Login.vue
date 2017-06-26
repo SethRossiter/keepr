@@ -19,14 +19,14 @@
                         </div>
                         <div class="form group row">
                             <div class="col-10">
-                                <button class="btn btn-default" type="submit">SUBMIT</button>
+                                <button class="btn btn-lg" type="submit">Login</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <h2 class="dungeon">Become a Dungeon Master... REGISTER
-                <router-link to='/register'>here</router-link>!</h2>
+            <h2 class="dungeon">Don't have an account?
+                <router-link to='/register'>Register</router-link></h2>
         </div>
     </div>
 </template>
