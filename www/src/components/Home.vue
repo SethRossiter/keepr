@@ -2,7 +2,7 @@
     <div class="keeps">
         <nav class = "navbar navbar-default">
             <ul class = "navbar-right">
-                    <button type="button"><router-link to='/vaults'>Dashboard</router-link></button>   
+                <button type="button"><router-link to='/vaults'>Dashboard</router-link></button>   
             </ul>
         </nav>
     <form  class="form-inline" @submit.prevent="getKeeps">
