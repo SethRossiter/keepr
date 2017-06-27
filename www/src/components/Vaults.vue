@@ -1,12 +1,20 @@
 <template>
-   <div class="container">
+   <div class="vaults">
       <div class="row">
-        <form class="col-md-3" @submit.prevent="createVault">
-          <input type="text" v-model="name" required placeholder="Vault Name">          
-          <input type="text" v-model="description" required placeholder="Description of Vault">
-          <input type="text" v-model="imgUrl" required placeholder="imgUrl of Vault">
-          <input type="text" v-model="articleUrl" required placeholder="articleUrl of Vault">
-          <button @click="createVault">Add Vault</button>
+      <ul class = "nav navbar-nav navbar-right">
+        <li><button type = "button"><router-link :to=" '/home'"><h6>Home</h6></router-link></button></li>
+        <li><button type = "button"><a @click="logout(this.user)">logout</a></button></li>
+      </ul>
+        <form @submit.prevent="createVault"><!---do toggle for inputs-->
+          <div class ="col-md-3">
+            <div class ="input-group">
+              <input type="text" v-model= "name" required placeholder="Vault Name">          
+              <input type="text" v-model= "description" required placeholder="Description of Vault">
+              <input type="text" v-model= "imgUrl" required placeholder="imgUrl of Vault">
+              <input type="text" v-model= "articleUrl" required placeholder="articleUrl of Vault">
+              <button @click="createVault">Add Vault</button>
+            </div>
+          </div>
         </form>
         <div class="col-md-9">
           <div class="row">
@@ -14,9 +22,6 @@
               <div class="well">
                 <router-link :to="'/vaults/'+vault._id">
                   <h3>{{vault.name}}</h3>
-                  <p>{{vault.description}}</p>
-                  <p>{{vault.imgUrl}}</p>
-                  <p>{{vault.articleUrl}}</p>
                 </router-link>
                 <a class="fa fa-trash" @click="removeVault(vault)"></a>
               </div>
@@ -43,7 +48,7 @@
       this.$store.dispatch('getVaults')
     },
     computed: {
-      campaigns() {
+      vaults() {
         return this.$store.state.vaults
       }
     },
@@ -65,8 +70,9 @@
       },
       removeVault(vault) {
         this.$store.dispatch('removeVault', vault)
-      },
-    }
+      }
+    },
+    components: {}
   }
 </script>
 

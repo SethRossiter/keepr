@@ -10,6 +10,7 @@ var schema = new mongoose.Schema({
   created: { type: Number, default: Date.now() },
   creatorId: {type: ObjectId, ref: models.user.name, required: true},
   collaborators: [{type: ObjectId, ref: models.user.name}],
+  // vaultId: {type: ObjectId, ref: models.vault.name, required: true},
   keeps: [{type: ObjectId, ref: models.keep.name}]
   
 });

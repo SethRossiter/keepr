@@ -5,13 +5,14 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-// let api = axios.create({
-//   baseURL: 'http://localhost:3000/api/',
-//   timeout: 2000,
-//   withCredentials: true
-// })
+let api = axios.create({
+  baseURL: '//localhost:3000/api/',
+  timeout: 2000,
+  withCredentials: true
+})
+
 let auth = axios.create({
-  baseURL: 'http://localhost:3000/api/',
+  baseURL: '//localhost:3000/',
   timeout: 2000,
   withCredentials: true
 })
@@ -176,7 +177,7 @@ export default new Vuex.Store ({
     createVault({commit, dispatch}, vault) {
       api.post('/vaults/', vault)
       .then(res => {
-        dispatch('getVaults')
+        dispatch('getVault')
       })
       .catch(handleError)
     },

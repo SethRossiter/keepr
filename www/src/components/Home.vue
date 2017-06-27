@@ -35,7 +35,15 @@
 export default {
     name: 'keeps',
     data() {
-       this.$store.dispatch('getKeeps')
+       return {
+           name: '',
+           description: '',
+           imgUrl: '',
+           articleUrl: ''
+       }
+    },
+    created(){
+        this.$store.dispatch('getKeeps', id)
     },
    computed: {
        keeps() {
