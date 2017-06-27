@@ -21,10 +21,10 @@ let auth = axios.create({
 let state = {
   user: {},
   error: {},
-  vaults: {},
-  myVaults: {},
+  vaults: [],
+  myVaults: [],
   activeVault: {},
-  myKeeps: {},
+  myKeeps: [],
   activeKeep: {},
   //Dummy Data
   keeps: [{
@@ -177,7 +177,7 @@ export default new Vuex.Store ({
     createVault({commit, dispatch}, vault) {
       api.post('/vaults/', vault)
       .then(res => {
-        dispatch('getVault')
+        dispatch('getVaults')
       })
       .catch(handleError)
     },

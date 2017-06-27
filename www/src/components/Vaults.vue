@@ -1,35 +1,46 @@
 <template>
    <div class="vaults">
-      <div class="row">
-      <ul class = "nav navbar-nav navbar-right">
-        <li><button type = "button"><router-link :to=" '/home'"><h6>Home</h6></router-link></button></li>
-        <li><button type = "button"><a @click="logout(this.user)">logout</a></button></li>
-      </ul>
-        <form @submit.prevent="createVault"><!---do toggle for inputs-->
-          <div class ="col-md-3">
-            <div class ="input-group">
-              <input type="text" v-model= "name" required placeholder="Vault Name">          
-              <input type="text" v-model= "description" required placeholder="Description of Vault">
-              <input type="text" v-model= "imgUrl" required placeholder="imgUrl of Vault">
-              <input type="text" v-model= "articleUrl" required placeholder="articleUrl of Vault">
-              <button @click="createVault">Add Vault</button>
-            </div>
-          </div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h1 class="logo">K</h1>
+          <ul>
+            <li>
+              <li><button type = "button"><router-link :to=" '/home'"><h6>Home</h6></router-link></button></li>  
+            </li>
+            <li>
+              <li><button type = "button"><a @click="logout(this.user)">logout</a></button></li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class = "container">
+      <div class = "row">
+        <form class= "col-md-3" @submit.prevent= "createVault">
+          <input type= "text" v-model = "name" required placeholder= "Vault Name">
+          <input type= "text" v-model = "description" required placeholder = "Vault Description">
+          <input type= "text" v-model = "imgUrl" required placeholder = "Image Url">
+          <input type= "text" v-model = "articleUrl" required placeholder = "Article Url">
+          <button @click= "createVault">Create a Vault</button>
         </form>
-        <div class="col-md-9">
-          <div class="row">
-            <div class="col-md-4" v-for="vault in vaults">
-              <div class="well">
-                <router-link :to="'/vaults/'+vault._id">
+        <div class= "col-md-9">
+          <div class = "row">
+            <div class = "col-md-4" v-for= "vault in vaults">
+              <div class= "well">
+                <router-link :to=" '/vaults/' + vault._id">
                   <h3>{{vault.name}}</h3>
+                  <p>{{vault.description}}</p>
                 </router-link>
-                <a class="fa fa-trash" @click="removeVault(vault)"></a>
+                <a class = "fa fa-trash" @click="removeVault(vault)"></a>
               </div>
             </div>
           </div>
-        </div>
+        </div>  
       </div>
     </div>
+    </div>
+  </div>        
 </template>
 
 <script>
@@ -71,8 +82,7 @@
       removeVault(vault) {
         this.$store.dispatch('removeVault', vault)
       }
-    },
-    components: {}
+    }
   }
 </script>
 

@@ -43,7 +43,7 @@ export default {
        }
     },
     created(){
-        this.$store.dispatch('getKeeps', id)
+        this.$store.dispatch('getKeeps',Id)
     },
    computed: {
        keeps() {
