@@ -23,6 +23,7 @@ let state = {
   error: {},
   vaults: [],
   activeVault: {},
+  activeKeep: {},
   myKeeps: [],
   activeKeep: {},
   //Dummy Data
@@ -122,7 +123,7 @@ export default new Vuex.Store ({
             // return handleError(res.data.error)
           }
           commit('setUser', res.data.data)
-          router.push('/dashboard')
+          router.push('/public')
         })
         .catch(handleError)
     },
@@ -133,7 +134,7 @@ export default new Vuex.Store ({
             // return handleError(res.data.error)
           }
           state.user = res.data.data
-          router.push('/dashboard')
+          router.push('/public')
         })
         .catch(handleError)
     },
@@ -144,7 +145,7 @@ export default new Vuex.Store ({
             return router.push('/login')
           }
           state.user = res.data.data
-          router.push('/dashboard')
+          router.push('/public')
         }).catch(err => {
           router.push('/login')
         })

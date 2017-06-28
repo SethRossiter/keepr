@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
+import Public from '@/components/Public'
 import Dashboard from '@/components/Dashboard'
 import Vault from '@/components/Vault'
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/public',
+      name: 'Public',
+      component: Public
     },
     {
       path: '/dashboard',

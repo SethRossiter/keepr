@@ -6,7 +6,7 @@
       <div class="col-xs-8">
         <p class="logout pull-right">
           <button class="logout" @click="logout(user)">Logout</button>
-          <button><router-link :to="'/vaults/'">Back to Vaults</router-link></button>
+          <button><router-link :to="'/dashboard/'">Back to Vaults</router-link></button>
         </p>
       </div>
     </div>
@@ -15,8 +15,15 @@
       <div v-for="keep in keeps">
         <div class="col-xs-6 col-sm-2">
           <router-link :to="'/keeps/'+keep._id">
+            <button @click = "activeKeep">createKeep</button>
+            {{keep.imgUrl}}
             {{keep.title}}
             {{keep.description}}
+            {{keep.articleUrl}}
+            {{keep.body}}
+            {{keep.shareCount}}
+            {{keep.viewCount}}
+            {{keep.keepCount}}
           </router-link>
         </div>
       </div>
@@ -46,6 +53,13 @@ export default {
         return {
             title: '',
             description: '',
+            imgUrl: '',
+            articleUrl: '',
+            shareCount: Number,
+            viewCount: Number,
+            keepCount: Number,
+            body: '',
+            tags: '',
             creatorId: this.$store.state.user._id,
             activeVault: this.$store.state.activeVault
         }
@@ -64,6 +78,12 @@ export default {
     methods: {
         createKeep() {
             this.$store.dispatch('createKeep', {
+                imgUrl: this.imgUrl,
+                articleUrl: this.articleUrl,
+                shareCount: this.shareCount,
+                viewCount: this.viewCount,
+                keepCount: this.keepCount,
+                tags: this.tags,
                 title: this.title,
                 body: this.body,
                 creatorId: this.creatorId,                

@@ -6,6 +6,7 @@
                     <h1>Welcome to your Vaults, {{user.name}}!</h1>
                     <p>Lets get Keeping!</p>
                     <button class = "logout" @click="logout(user)">Logout</button>
+                    <button><router-link :to="'/public/'">Public Keeps</router-link></button>
                 </div>
             </div>
         </nav>
@@ -16,6 +17,7 @@
                     <router-link :to=" '/vaults/' + vault._id">
                         <button @click = "activeVault(vault._id)">{{vault.title}}</button>
                     </router-link>
+                        <button @click = "removeVault(vault)">Delete</button>
                 </div>
             </div>
         </div>
