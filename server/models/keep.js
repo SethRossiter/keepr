@@ -4,12 +4,19 @@ let mongoose = require('mongoose')
 let ObjectId = mongoose.Schema.ObjectId
 
 var schema = new mongoose.Schema({
-	name: { type: String, required: true },
+	title: { type: String, required: true },
 	description: { type: String },
-    articleUrl: { type: String},
+	articleUrl: { type: String},
+	imgUrl: { type: String},
 	created: { type: Number, default: Date.now() },
+	creatorId: {type: ObjectId, ref: modes.user.name, required: true},
+	body: {type: Sting, required: true},
+	shareCount: {type: Number, default: 0},
+	viewCount: {type: Number, default: 0},
+	keepCount: {type: Number, default: 0},
+	tags: [{type: String}],
+	vaults: [{ type: ObjectId, ref: models.vault.name, required: true }],
 	// Relations
-	vaultId: { type: ObjectId, ref: models.vault.name, required: true },
 	
 });
 

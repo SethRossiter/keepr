@@ -22,7 +22,6 @@ let state = {
   user: {},
   error: {},
   vaults: [],
-  myVaults: [],
   activeVault: {},
   myKeeps: [],
   activeKeep: {},
@@ -93,11 +92,11 @@ export default new Vuex.Store ({
     setVaults(state, vaults) {
       state.vaults = vaults
     },
-    setmyVaults(state, myVaults) {
-      state.myVaults = myVaults
+    setmyVaults(state, vault) {
+      state.vaults.push(vault)
     },
     setActiveVault(state, activeVault) {
-      state.activeVault = activeVault
+      state.activeVault = activeVault 
     },
     setKeeps(state, keeps) {
       state.keeps = keeps
@@ -105,7 +104,7 @@ export default new Vuex.Store ({
     setActiveKeep(state, activeKeep) {
       state.activeKeep = activeKeep
     },
-    setmyKeeps(state, myKeeps) {
+    setMyKeeps(state, myKeeps) {
       state.myKeeps = myKeeps
     }
 
@@ -167,8 +166,8 @@ export default new Vuex.Store ({
       })
       .catch(handleError)
     },
-    getVault({commit, dispatch}, id) {
-      api('/vaults/' + id)
+    getActiveVault({commit, dispatch}, vaultId) {
+      api('/vaults/' + vaultid)
       .then(res => {
         commit('setActiveVault', res.data.data)
       })
@@ -177,7 +176,13 @@ export default new Vuex.Store ({
     createVault({commit, dispatch}, vault) {
       api.post('/vaults/', vault)
       .then(res => {
+        commit('setMyVault', res.data.data)
+        .then(res => {
         dispatch('getVaults')
+        .then(res => {
+          commit('setVaults', res.data.data)
+        })
+        })
       })
       .catch(handleError)
     },
@@ -189,24 +194,34 @@ export default new Vuex.Store ({
       .catch(handleError)
     },
     //Keep Actions
-    getKeeps({commit, dispatch}, id) {
-      api('/vaults/' + id + '/keeps/')
+    getKeeps({commit, dispatch}) {
+      api('keeps')
       .then(res => {
         commit('setKeeps', res.data.data)
       })
       .catch(handleError)
     },
-    getKeep({commit, dispatch}, id) {
-      api('/keeps/' + id)
+    getMyKeeps({commit, dispatch}) {
+      api('userkeeps')
       .then(res => {
-        commit('setActiveKeep', res.data.data)
+        commit('setMyKeeps', res.data.data)
       })
       .catch(handleError)
+    },
+      getKeepsByVaultId({commit, dispatch}, vualtId) {
+        api('vaults/' + vaultId + '/keeps')
+        .then(res => {
+          commit('setKeeps', res.data.data)
+        })
+        .catch(handleError)
     },
     createKeep({commit, dispatch}, keep) {
       api.post('/keeps' + keep)
       .then(res => {
-        dispatch('getKeeps', keep.vaultId)
+        dispatch('getKeeps')
+        .then(res => {
+          commit('setKeeps', res.data.data)
+        })
       })
       .catch(handleError)
     },

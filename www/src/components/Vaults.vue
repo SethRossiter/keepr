@@ -22,7 +22,7 @@
           <input type= "text" v-model = "description" required placeholder = "Vault Description">
           <input type= "text" v-model = "imgUrl" required placeholder = "Image Url">
           <input type= "text" v-model = "articleUrl" required placeholder = "Article Url">
-          <button @click= "createVault">Create a Vault</button>
+          <button type = "submit">Create a Vault</button>
         </form>
         <div class= "col-md-9">
           <div class = "row">
@@ -52,6 +52,7 @@
         description: "",
         imgUrl: "",
         articleUrl: "",
+        creatorId: this.$store.state.user._id
 
       }
     },
@@ -61,6 +62,9 @@
     computed: {
       vaults() {
         return this.$store.state.vaults
+      },
+      user () {
+        return this.$store.state.user
       }
     },
     methods: {
@@ -72,15 +76,19 @@
           name: this.name,
           description: this.description,
           imgUrl: this.imgUrl,
-          articleUrl: this.articleUrl
+          articleUrl: this.articleUrl,
+          creatorId: this.creatorId
         })
-        this.name = '',
-        this.description = '',
-        this.imgUrl = '',
-        this.articleUrl = ''
+        // this.name = '',
+        // this.description = '',
+        // this.imgUrl = '',
+        // this.articleUrl = ''
       },
       removeVault(vault) {
         this.$store.dispatch('removeVault', vault)
+      },
+      activeVault(vaultId) {
+        this.$store.dispatch('getActiveVault', vaultId)
       }
     }
   }
