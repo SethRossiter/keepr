@@ -10,7 +10,7 @@ const models = {
   user: {
     name: 'User',
     endpoint: 'users',
-    preventDefaultApi: true,
+    // preventDefaultApi: true,
     useCustomRoutes: true
   },
   vault: {

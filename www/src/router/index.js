@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
-import Home from '@/components/Home'
-import Vaults from '@/components/Vaults'
+import Dashboard from '@/components/Dashboard'
 import Vault from '@/components/Vault'
-import Keep from '@/components/Keep'
+
+
 
 
 Vue.use(Router)
@@ -18,29 +18,19 @@ export default new Router({
       component: Login
     },
     {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
       path: '/register',
       name: 'Register',
       component: Register
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: Home
-    },
-    {
-     path: '/vaults',
-     name: 'Vaults',
-     component: Vaults
-    },
-    {
       path: '/vaults/:Id',
       name: 'Vault',
       component: Vault
-    },
-    {
-      path: '/vaults/:vaultId/keeps/:Id',
-      name: 'Keep',
-      component: Keep
     },
     {
       path: "*",

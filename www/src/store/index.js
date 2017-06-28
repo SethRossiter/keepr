@@ -92,7 +92,7 @@ export default new Vuex.Store ({
     setVaults(state, vaults) {
       state.vaults = vaults
     },
-    setmyVaults(state, vault) {
+    setMyVaults(state, vault) {
       state.vaults.push(vault)
     },
     setActiveVault(state, activeVault) {
@@ -122,7 +122,7 @@ export default new Vuex.Store ({
             // return handleError(res.data.error)
           }
           commit('setUser', res.data.data)
-          router.push('/home')
+          router.push('/dashboard')
         })
         .catch(handleError)
     },
@@ -133,7 +133,7 @@ export default new Vuex.Store ({
             // return handleError(res.data.error)
           }
           state.user = res.data.data
-          router.push('/home')
+          router.push('/dashboard')
         })
         .catch(handleError)
     },
@@ -144,7 +144,7 @@ export default new Vuex.Store ({
             return router.push('/login')
           }
           state.user = res.data.data
-          router.push('/home')
+          router.push('/dashboard')
         }).catch(err => {
           router.push('/login')
         })
@@ -176,7 +176,7 @@ export default new Vuex.Store ({
     createVault({commit, dispatch}, vault) {
       api.post('/vaults/', vault)
       .then(res => {
-        commit('setMyVault', res.data.data)
+        commit('setMyVaults', res.data.data)
         .then(res => {
         dispatch('getVaults')
         .then(res => {
@@ -208,7 +208,7 @@ export default new Vuex.Store ({
       })
       .catch(handleError)
     },
-      getKeepsByVaultId({commit, dispatch}, vualtId) {
+      getKeepsByVaultId({commit, dispatch}, vaultId) {
         api('vaults/' + vaultId + '/keeps')
         .then(res => {
           commit('setKeeps', res.data.data)
