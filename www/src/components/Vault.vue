@@ -15,15 +15,10 @@
       <div v-for="keep in keeps">
         <div class="col-xs-6 col-sm-2">
           <router-link :to="'/keeps/'+keep._id">
-            <button @click = "activeKeep">createKeep</button>
+            <!--<button @click = "activeKeep">createKeep</button>-->
             {{keep.imgUrl}}
             {{keep.title}}
-            {{keep.description}}
-            {{keep.articleUrl}}
-            {{keep.body}}
-            {{keep.shareCount}}
-            {{keep.viewCount}}
-            {{keep.keepCount}}
+            {{keep.description}}   
           </router-link>
         </div>
       </div>
@@ -92,6 +87,9 @@ export default {
         logout() {
             this.$store.dispatch('logout', this.user)
         }
+    },
+    components: {
+     
     }
 } 
 </script>

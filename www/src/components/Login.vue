@@ -1,27 +1,27 @@
 <template>
      <div class="login">
         <div class="container-fluid">
-                    <form  @submit.prevent="login">
-                        <div class="input-group">
-                            <div class="col-10">
+                    <form class =" navbar-form navbar-right" @submit.prevent="login">
+                        <div class="form-group">
+                            <label class = "sr-only" for="user.email">Email Address</label>
                                 <input type="email" class="form-control" v-model="user.email" required placeholder="email">
                             </div>
-                        </div>
-                        <div class="input-group">
-                            <div class="col-10">
+                            <div class = "form-group">
+                                <label class = "sr-only" for="user.password">Password</label>
                                 <input type="password" class="form-control" v-model="user.password" required placeholder="password">
                             </div>
-                        </div>
-                        <div class="form group row">
-                            <div class="col-10">
-                                <button class="btn btn-lg" type="submit">Login</button>
+                        <div class = "checkbox">
+                            <label>
+                                <input type = "checkbox"> Remember me
+                            </label>
                             </div>
-                        </div>
-                    </form>                     
-            <h2 class="dungeon">Don't have an account?
-                <router-link to='/register'>Register</router-link></h2>
-
+                                <button class="btn btn-lg" type="submit">Login</button>
+                        </form>                     
+             </div>
+        <div class = "letter">
+            <p>K</p>
         </div>
+            <h2><router-link to='/register'>Register</router-link></h2>
     </div>
 </template>
 
@@ -45,30 +45,42 @@ export default {
 
 <style scoped>
 
-    .login {
-        background-color: black;
+    .letter {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+        font-size: 500px;
     }
 
-
-    h1 {
-        text-align: center;
-        font-size: 60px;
-        font-weight: bold;
+    .navbar-form {
+        margin-right: 10px;
     }
+    
+    .checkbox {
+        margin-right: 10px;
+    }
+
+    h2 {
+        position: fixed;
+        top: 10%;
+        right: 0%;
+        /* bring your own prefixes */
+        transform: translate(-20%, -50%);
+        font-size: 30px;
+    }
+
+    
 
     input {
         color: black;
-        margin-bottom: 10px;
+        margin-right: 10px;
         font-size: 17px;
+        padding: 25px;
     }
 
-    .well {
-        width: 335px;
-        margin: 0 auto;
-        text-align: center;
-        background-color: rgba(100, 100, 100, 0);
-        border-color: rgba(100, 100, 100, 0);
-    }
+  
 
    
 
