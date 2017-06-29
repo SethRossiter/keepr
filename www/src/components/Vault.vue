@@ -2,8 +2,9 @@
   <div class="vault">
     <div class="row">
         <p class="logout pull-right">
-          <button class="logout" @click="logout(user)">Logout</button>
-          <button><router-link :to="'/dashboard/'">Back to Vaults</router-link></button>
+          <button class="btn-lg active" @click="logout(user)">Logout</button>
+          <button class="btn-lg active"><router-link :to="'/dashboard/'">Back to Vaults</router-link></button>
+          <button class="btn-lg active"><router-link :to=" '/public/'">Public Keeps</router-link></button>
         </p>
       </div>
     <h2>Welcome to your Keeps!</h2>
@@ -44,7 +45,7 @@ export default {
     name: 'vault',
     data() {
         return {
-            keeps: [],
+            myKeeps: [],
             title: '',
             // description: '',
             // imgUrl: '',

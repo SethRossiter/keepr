@@ -14,28 +14,26 @@
         </nav>
         <div class = "row">
             <div class = "col-xs-4">
-                <h3>Make a Vault!</h3>
                 <form @submit.prevent = "createVault">
                     <div class = "form-group">
                         <input type = "text" class = "form-control" v-model ="title" placeholder="Vault Name" required>
-                    </div>
-                    <div class = "form-group">
-                        <input type = "text" class = "form-control" v-model ="description" placeholder="Description">
+                        <textarea rows="10" cols="30"  class = "form-control" v-model ="description" placeholder="Description"></textarea>
                     </div>
                     <button class="btn-lg active" type= "submit">Create Vault</button>
                 </form>
-                <h2>Your Vaults</h2>
-        <div class = "row">
-            <div v-for = "vault in vaults">
-                <div class = "col-xs-8 col-sm-4">
-                    <router-link :to=" '/vaults/' + vault._id">
+            </div>
+        <div class = "setup">  
+        <div v-for = "vault in vaults">
+            <div class = "col-xs-12">       
+             <div class = "col-xs-10"><router-link :to=" '/vaults/' + vault._id">
                         <button class="btn-lg active" @click = "activeVault(vault._id)">{{vault.title}}</button>
-                    </router-link>
-                        <button class="btn-lg active" @click = "removeVault(vault)">Delete</button>
+                        </router-link></div>
+             <div class ="col-xs-2"><button class="btn-lg active" @click = "removeVault(vault)">Delete</button> </div>      
+                 
+                </div>
                 </div>
             </div>
-        </div>
-            </div>
+         </div>
         </div>
     </div>
 </template>
@@ -83,7 +81,9 @@ export default {
 </script>
 
 <style scoped>
-
+.navbar {
+     position: absolute;
+}
 input {
         color: black;
         margin-right: 10px;
@@ -91,6 +91,25 @@ input {
         font-size: 17px;
         padding: 25px;
     }
+
+form {
+    border-radius: 50px;
+    color: black;
+    margin-top: 0px;
+    margin-left: 50px;
+    transform: translate(30%, 20%);
+    width: 30%;
+    
+}
+.setup {
+    position: absolute;
+    display: inline;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, -10%);
+    font-size: 10px;
+}
+
 
 
 </style>

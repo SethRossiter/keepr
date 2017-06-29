@@ -25,8 +25,8 @@
                             <h5>Shares: {{keep.shareCount}}</h5> 
                             <h5>Views: {{keep.viewCount}}</h5>
                             <h5>Author: {{keep.author}}</h5>
-                            <img :src="keep.imgUrl" class="img-circle">                        
-                     </div>
+                            <img :src="keep.imgUrl" class="img-circle">
+                     </div>                        
                  </div>
              </div>
          </div>
@@ -65,7 +65,10 @@
      methods: {
          logout() {
              this.$store.dispatch('logout',this.user)
-         }
+         },
+          removeKeep(keep) {
+            this.$store.dispatch('removeKeep', keep)
+        },
      }
  }
  </script>
