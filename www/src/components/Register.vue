@@ -47,7 +47,7 @@
 
 .letter {
         position: fixed;
-        top: 50%;
+        top: 55%;
         left: 50%;
         /* bring your own prefixes */
         transform: translate(-50%, -50%);
@@ -68,7 +68,7 @@
     }
      input {
         color: black;
-        margin-right: 7px;
+        margin-left: 7px;
         font-size: 17px;
         padding: 25px;
     }

@@ -1,24 +1,26 @@
 <template>
     <div class = "dashboard">
-        <nav class = "navbar navbar-default">
+        <nav class = "navbar navbar-inverse navbar-fixed-top">
             <div class = "container-fluid">
-                <div class = "navbar-header">
+                <div class = "navbar-headertext-center">
                     <h1>Welcome to your Vaults, {{user.name}}!</h1>
                     <p>Lets get Keeping!</p>
-                    <button class = "logout" @click="logout(user)">Logout</button>
-                    <button><router-link :to="'/public/'">Public Keeps</router-link></button>
+                    <div class = "buttons">
+                    <button class="btn-lg active pull-right" @click="logout(user)">Logout</button>
+                    <button class="btn-lg active pull-right"><router-link :to="'/public/'">Public Keeps</router-link></button>
+                    </div>
                 </div>
             </div>
         </nav>
-        <h2>Your Vaults</h2>
         <div class = "row">
             <div v-for = "vault in vaults">
                 <div class = "col-xs-8 col-sm-4">
                     <router-link :to=" '/vaults/' + vault._id">
-                        <button @click = "activeVault(vault._id)">{{vault.title}}</button>
+                        <button class="btn-lg active" @click = "activeVault(vault._id)">{{vault.title}}</button>
                     </router-link>
-                        <button @click = "removeVault(vault)">Delete</button>
+                        <button class="btn-lg active" @click = "removeVault(vault)">Delete</button>
                 </div>
+        <h2>Your Vaults</h2>
             </div>
         </div>
         <div class = "row">
@@ -31,7 +33,7 @@
                     <div class = "form-group">
                         <input type = "text" class = "form-control" v-model ="description" placeholder="Description">
                     </div>
-                    <button class = "btn" type= "submit">Create Vault</button>
+                    <button class="btn-lg active" type= "submit">Create Vault</button>
                 </form>
             </div>
         </div>
@@ -81,4 +83,12 @@ export default {
 </script>
 
 <style>
+
+input {
+        color: black;
+        margin-right: 10px;
+        font-size: 17px;
+        padding: 25px;
+    }
+
 </style>

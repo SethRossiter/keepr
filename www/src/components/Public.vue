@@ -42,6 +42,7 @@
 
  h1 {
      font-size: 75px;
+     
  }
  .btn-lg {
      margin-right: 20px;
