@@ -13,11 +13,8 @@
         <div class = "panel-body">
       <div v-for="keep in keeps">
         <div class="col-xs-6 col-sm-2">
-        Title: {{keep.title}} 
-        Keep: {{keep.keepCount}}
-        Shares: {{keep.shareCount}} 
-        Views: {{keep.viewCount}}
-        Author: {{keep.author}}
+        <h1>Title: {{keep.title}}</h1>
+        <h1>Body: {{keep.body}}</h1>
         <img :src="keep.imgUrl" class="img-circle" width ="50" height = "50"> 
         </div>
         </div>
@@ -62,7 +59,7 @@ export default {
         }
     },
     mounted() {
-        this.$store.dispatch('getKeepsByVaultId', this.activeVault._id)
+        this.$store.dispatch('getKeepsByVaultId', this.$route.params.id)
     },
     computed: {
         keeps() {
@@ -74,13 +71,7 @@ export default {
     },
     methods: {
         createKeep() {
-            this.$store.dispatch('createKeep', {
-                imgUrl: this.imgUrl,
-                articleUrl: this.articleUrl,
-                shareCount: this.shareCount,
-                viewCount: this.viewCount,
-                keepCount: this.keepCount,
-                tags: this.tags,
+            this.$store.dispatch('createKeep', {          
                 title: this.title,
                 body: this.body,
                 creatorId: this.creatorId,                
@@ -88,10 +79,13 @@ export default {
         },
         logout() {
             this.$store.dispatch('logout', this.user)
+        },
+        activeKeep(keepId) {
+          this.$store.dispatch('getActiveKeep', keepId)
         }
     },
     components: {
-     
+  
     }
 } 
 </script>

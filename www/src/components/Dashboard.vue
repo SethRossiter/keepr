@@ -72,7 +72,7 @@ export default {
         removeVault(vault) {
             this.$store.dispatch('removeVault', vault)
         },
-        acitveVault(vaultId) {
+        activeVault(vaultId) {
             this.$store.dispatch('getActiveVault', vaultId)
         },
         logout() {

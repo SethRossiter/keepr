@@ -220,7 +220,7 @@ export default new Vuex.Store ({
         .catch(handleError)
     },
     createKeep({commit, dispatch}, keep) {
-      api.post('keeps' + keep)
+      api.post('keeps/', keep)
       .then(res => {
         commit('setNewKeep', res.data.data)
         .then(res =>{
