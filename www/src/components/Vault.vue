@@ -51,7 +51,7 @@ export default {
             // shareCount: Number,
             // viewCount: Number,
             // keepCount: Number,
-            // body: '',
+            body: '',
             // tags: '',
             creatorId: this.$store.state.user._id,
             activeVault: this.$store.state.activeVault
