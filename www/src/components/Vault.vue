@@ -7,11 +7,12 @@
           <button class="btn-lg active"><router-link :to=" '/public/'">Public Keeps</router-link></button>
         </p>
       </div>
-    <h2>Welcome to your Keeps!</h2>
+    <h3>Welcome to your Keeps!</h3>
+    <h4>Create a new Keep!</h4>
     <h2>{{vault.title}}</h2>
     <div class="row">
       <div v-for="keep in keeps">
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-xs-4 text-center">
           <div class = "well">
         <h1>{{keep.title}}</h1>
         <!--<h1>Body: {{keep.body}}</h1>-->
@@ -22,7 +23,6 @@
       </div>
     <div class="row">
       <div class="col-xs-8">
-        <h3>Create a new Keep!</h3>
         <form @submit.prevent="createKeep">
           <div class="form-group">
             <input type="text" class="form-control-small input-lg" v-model="title" placeholder="Keep Name" required>
@@ -96,5 +96,20 @@ export default {
 
 .well {
   height: 30;
+}
+
+.vault form {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(20%, 20%);
+   font-size: 20px;
+}
+
+h3 {
+  font-size: 70px;
+}
+h4 {
+  font-size: 50px;
 }
 </style>
