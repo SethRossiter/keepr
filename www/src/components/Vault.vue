@@ -67,6 +67,9 @@ export default {
         },
         vault () {
             return this.$store.state.activeVault
+        },
+        user() {
+            return this.$store.state.user
         }
     },
     methods: {

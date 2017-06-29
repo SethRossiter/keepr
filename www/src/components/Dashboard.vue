@@ -4,7 +4,7 @@
             <div class = "container-fluid">
                 <div class = "navbar-headertext-center">
                     <h1>Welcome to your Vaults, {{user.name}}!</h1>
-                    <p>Lets get Keeping!</p>
+                    <h3>Lets get Keeping</h3>
                     <div class = "buttons">
                     <button class="btn-lg active pull-right" @click="logout(user)">Logout</button>
                     <button class="btn-lg active pull-right"><router-link :to="'/public/'">Public Keeps</router-link></button>
@@ -14,7 +14,6 @@
         </nav>
         <div class = "row">
             <div class = "col-xs-4">
-                <h2>Your Vaults</h2>
                 <h3>Make a Vault!</h3>
                 <form @submit.prevent = "createVault">
                     <div class = "form-group">
@@ -25,6 +24,7 @@
                     </div>
                     <button class="btn-lg active" type= "submit">Create Vault</button>
                 </form>
+                <h2>Your Vaults</h2>
         <div class = "row">
             <div v-for = "vault in vaults">
                 <div class = "col-xs-8 col-sm-4">

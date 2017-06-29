@@ -102,7 +102,7 @@ export default new Vuex.Store ({
     setKeeps(state, keeps) {
       state.keeps = keeps
     },
-    setNewKeep(state, keep){
+    setNewKeeps(state, keep){
       state.keeps.push(keep)
     },
     setActiveKeep(state, activeKeep) {
@@ -222,7 +222,7 @@ export default new Vuex.Store ({
     createKeep({commit, dispatch}, keep) {
       api.post('keeps/', keep)
       .then(res => {
-        commit('setNewKeep', res.data.data)
+        commit('setNewKeeps', res.data.data)
         .then(res =>{
         dispatch('getKeeps')
         .then(res => {
