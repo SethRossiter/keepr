@@ -10,14 +10,12 @@
     <h2>Welcome to your Keeps!</h2>
     <h2>{{vault.title}}</h2>
     <div class="row">
-      <div class= "panel panel-default">
-        <div class = "panel-body">
       <div v-for="keep in keeps">
         <div class="col-xs-6 col-sm-2">
-        <h1>Title: {{keep.title}}</h1>
-        <h1>Body: {{keep.body}}</h1>
-        <img :src="keep.imgUrl" class="img-circle" width ="50" height = "50"> 
-        </div>
+          <div class = "well">
+        <h1>{{keep.title}}</h1>
+        <!--<h1>Body: {{keep.body}}</h1>-->
+        <img :src="keep.imgUrl" class="img-circle" width ="50" height = "50">
         </div>
         </div>
         </div>
@@ -45,7 +43,7 @@ export default {
     name: 'vault',
     data() {
         return {
-            myKeeps: [],
+            // myKeeps: [],
             title: '',
             // description: '',
             // imgUrl: '',
@@ -53,14 +51,14 @@ export default {
             // shareCount: Number,
             // viewCount: Number,
             // keepCount: Number,
-            body: '',
+            // body: '',
             // tags: '',
             creatorId: this.$store.state.user._id,
             activeVault: this.$store.state.activeVault
         }
     },
     mounted() {
-        this.$store.dispatch('getKeepsByVaultId', this.$route.params.id)
+        this.$store.dispatch('getKeepsByVaultId', this.activeVault._id)
     },
     computed: {
         keeps() {
@@ -94,5 +92,9 @@ export default {
 } 
 </script>
 
-<style>
+<style scoped>
+
+.well {
+  height: 30;
+}
 </style>
