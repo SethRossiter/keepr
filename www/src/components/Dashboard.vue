@@ -13,18 +13,8 @@
             </div>
         </nav>
         <div class = "row">
-            <div v-for = "vault in vaults">
-                <div class = "col-xs-8 col-sm-4">
-                    <router-link :to=" '/vaults/' + vault._id">
-                        <button class="btn-lg active" @click = "activeVault(vault._id)">{{vault.title}}</button>
-                    </router-link>
-                        <button class="btn-lg active" @click = "removeVault(vault)">Delete</button>
-                </div>
-        <h2>Your Vaults</h2>
-            </div>
-        </div>
-        <div class = "row">
-            <div class = "col-xs-8 col-sm-4">
+            <div class = "col-xs-4">
+                <h2>Your Vaults</h2>
                 <h3>Make a Vault!</h3>
                 <form @submit.prevent = "createVault">
                     <div class = "form-group">
@@ -35,6 +25,16 @@
                     </div>
                     <button class="btn-lg active" type= "submit">Create Vault</button>
                 </form>
+        <div class = "row">
+            <div v-for = "vault in vaults">
+                <div class = "col-xs-8 col-sm-4">
+                    <router-link :to=" '/vaults/' + vault._id">
+                        <button class="btn-lg active" @click = "activeVault(vault._id)">{{vault.title}}</button>
+                    </router-link>
+                        <button class="btn-lg active" @click = "removeVault(vault)">Delete</button>
+                </div>
+            </div>
+        </div>
             </div>
         </div>
     </div>
@@ -82,13 +82,15 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 input {
         color: black;
         margin-right: 10px;
+        margin-top: 200px;
         font-size: 17px;
         padding: 25px;
     }
+
 
 </style>

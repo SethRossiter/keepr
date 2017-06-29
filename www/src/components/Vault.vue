@@ -47,6 +47,7 @@ export default {
     name: 'vault',
     data() {
         return {
+            keeps: [],
             title: '',
             // description: '',
             // imgUrl: '',
